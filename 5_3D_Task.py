@@ -76,13 +76,16 @@ def convert_to_morse():
         messagebox.showinfo("Error", "Please only type a word up to 12 characters!")
     else:
         for letter in led_code:
-            for component in CODE[letter.upper()]:
-                if component == '-':
-                    dash()
-                elif component == '.':
-                    dot()
-                else:
-                    time.sleep(dash_length)
+            if letter.upper() in CODE:
+                for component in CODE[letter.upper()]:
+                    if component == '-':
+                        dash()
+                    elif component == '.':
+                        dot()
+                    else:
+                        time.sleep(dash_length)
+            else:
+                messagebox.showinfo("Error", "Please only type valid characters!")
 
 def dot():
     print(". ")
